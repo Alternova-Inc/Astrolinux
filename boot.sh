@@ -4,13 +4,25 @@ set -e
 # Function to install gum
 install_gum() {
     echo "Installing gum..."
-    # Download the latest release of gum from GitHub
-    GUM_VERSION=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r .tag_name)
-    curl -LO "https://github.com/charmbracelet/gum/releases/download/${GUM_VERSION}/gum_${GUM_VERSION}_linux_amd64.tar.gz"
-    tar -xzf "gum_${GUM_VERSION}_linux_amd64.tar.gz"
-    chmod +x gum
-    sudo mv gum /usr/local/bin/
-    rm "gum_${GUM_VERSION}_linux_amd64.tar.gz"
+    cd /tmp
+
+    # Check if curl is installed, and install it if it's not
+    if ! command -v curl &> /dev/null; then
+        echo "Installing curl..."
+        sudo apt-get update
+        sudo apt-get install -y curl
+    fi
+    
+    # Get the latest version number from GitHub releases
+    GUM_VERSION=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r .tag_name) 
+    
+    # Remove the 'v' prefix from the version number, if present
+    GUM_VERSION=${GUM_VERSION#v}
+
+    wget -qO gum.deb "https://github.com/charmbracelet/gum/releases/download/v${GUM_VERSION}/gum_${GUM_VERSION}_amd64.deb"
+    sudo apt-get install -y ./gum.deb
+    rm gum.deb
+    cd -
     echo "gum installed successfully."
 }
 

@@ -17,7 +17,7 @@ if is_gnome_terminal_available; then
     gnome-terminal --geometry=90x24 -- bash -c "./boot.sh; exec bash"
 else
     echo "gnome-terminal is not available. Executing script in the current terminal..."
-    ./boot.sh
+    source ./boot.sh
 fi
 
 clear
