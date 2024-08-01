@@ -16,5 +16,5 @@ if $RUNNING_GNOME; then
     # Install Desktop tools
     source ~/.local/share/astrolinux/install/desktop.sh
 else
-	echo “Unable to install because the terminal is not GNOME”.
+	echo "Unable to install because the terminal is not GNOME".
 fi
