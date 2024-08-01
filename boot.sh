@@ -32,17 +32,18 @@ if ! command -v gum &>/dev/null; then
 fi
 
 gum_style() {
-    gum style --foreground '#7671E5' --border-foreground '#F45BC1' --border double --align center --width 60 --margin "1 0" --padding "1 0" "$1"
+    gum style --foreground '#7671E5' --border-foreground '#F45BC1' --border rounded --align center --width 60 --margin "1 0" --padding "1 0" "$1"
 }
 
 # Function to install Astrolinux
 install_astrolinux() {
+    gum_style "Updating packages..."
     sudo apt-get update >/dev/null
     sudo apt-get install -y git >/dev/null
     gum spin --title "Loading AstroLinux..." -- sleep 1
     gum_style "Cloning Astrolinux..."
     rm -rf ~/.local/share/astrolinux
-    cp -r /home/edfer/Compartidos/astrolinux ~/.local/share/astrolinux
+    cp -r /home/$USER/Compartida/astrolinux ~/.local/share/astrolinux
     gum_style "Cloning complete."
     gum_style "Installation starting..."
     source ~/.local/share/astrolinux/install.sh
@@ -83,7 +84,8 @@ present_menu() {
 }
 
 # Welcome
-source ./welcomeToAstroLinux.sh
+wget -qO- https://raw.githubusercontent.com/Alternova-Inc/Astrolinux/main/welcomeToAstroLinux.sh | bash
+
 echo -e "\nBegin installation (or abort with ctrl+c)..."
 
 # Present menu and handle selection
