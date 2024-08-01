@@ -35,13 +35,13 @@ gum_style() {
     gum style --foreground '#7671E5' --border-foreground '#F45BC1' --border rounded --align center --width 60 --margin "1 0" --padding "1 0" "$1"
 }
 
-# Function to install Astrolinux
+# Function to install AstroLinux
 install_astrolinux() {
     gum_style "Updating packages..."
     sudo apt-get update >/dev/null
     sudo apt-get install -y git >/dev/null
     gum spin --title "Loading AstroLinux..." -- sleep 1
-    gum_style "Cloning Astrolinux..."
+    gum_style "Cloning AstroLinux..."
     rm -rf ~/.local/share/astrolinux
     cp -r /home/$USER/Compartida/astrolinux ~/.local/share/astrolinux
     gum_style "Cloning complete."
@@ -58,7 +58,7 @@ install_omakub() {
 # Function to present menu and handle selection
 present_menu() {
     CHOICES=(
-        "Astrolinux    Install Astrolinux tools for Ubuntu 24.04 by Alternova"
+        "AstroLinux    Install AstroLinux tools for Ubuntu 24.04 by Alternova"
         "Omakub        An Omakase Developer Setup for Ubuntu 24.04 by DHH"
     )
 
@@ -73,7 +73,7 @@ present_menu() {
         case "$OPTION_NAME" in
         "astrolinux")
             # Show confirmation prompt
-            gum confirm "$(gum_style "Are you sure you want to proceed with Astrolinux installation?")" && gum spin --title "Starting installation..." -- sleep 1.5 && install_astrolinux
+            gum confirm "$(gum_style "Are you sure you want to proceed with AstroLinux installation?")" && gum spin --title "Starting installation..." -- sleep 1.5 && install_astrolinux
             ;;
         "omakub")
             # Show confirmation prompt
