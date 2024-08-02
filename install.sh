@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e
 
 # Desktop software and tweaks will only be installed if we're running Gnome
@@ -12,9 +13,9 @@ if $RUNNING_GNOME; then
 	gsettings set org.gnome.desktop.session idle-delay 0
 
 	echo "Starting Desktop tools installation..."
-    
-    # Install Desktop tools
-    source ~/.local/share/astrolinux/install/desktop.sh
+
+	# Install Desktop tools
+	source ~/.local/share/astrolinux/install/desktop.sh
 else
 	echo "Unable to install because the terminal is not GNOME".
 fi

@@ -1,4 +1,6 @@
+#!/bin/bash
 set -e
+source ~/.local/share/astrolinux/constants/colors-palette.sh
 
 # ASCII Art
 ascii_art='
@@ -14,13 +16,13 @@ AstroLinux is only for fresh installations of Ubuntu 24.04. Install it and enjoy
 
 # Defines Alternova color palette in the gradient
 colors=(
-    '\e[38;2;249;172;127m' # #F9AC7F - Light Peach
-    '\e[38;2;247;148;160m' # #F794A0 - Peach Pink
-    '\e[38;2;245;119;177m' # #F577B1 - Pink Blush
-    '\e[38;2;244;91;193m'  # #F45BC1 - Vibrant Pink
-    '\e[38;2;194;82;202m'  # #C252CA - Purple Pink
-    '\e[38;2;156;78;216m'  # #9C4ED8 - Violet
-    '\e[38;2;118;113;229m' # #7671E5 - Lavender Blue
+    "$ANSI_LIGHT_PEACH"
+    "$ANSI_PEACH_PINK"
+    "$ANSI_PINK_BLUSH"
+    "$ANSI_VIBRANT_PINK"
+    "$ANSI_PURPLE_PINK"
+    "$ANSI_VIOLET"
+    "$ANSI_LAVENDER_BLUE"
 )
 
 # Get the number of colors in the palette
@@ -39,5 +41,8 @@ apply_gradient() {
     done <<<"$art"
 }
 
-# Apply the gradient
-apply_gradient "$ascii_art"
+welcome_to_astrolinux() {
+    apply_gradient "$ascii_art"
+}
+
+export -f welcome_to_astrolinux

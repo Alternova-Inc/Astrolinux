@@ -1,8 +1,4 @@
-# set -e
-
-# We open the gnome terminal with specific measures so that the welcome is well appreciated
-# gnome-terminal --geometry=90x24 -- bash -c "./boot.sh; exec bash"
-
+#!/bin/bash
 set -e
 
 # Function to check if gnome-terminal command is available
