@@ -1,5 +1,23 @@
-gum_style() {
-    gum style --foreground '#7671E5' --border-foreground '#F45BC1' --border rounded --align center --width 60 --margin "1 0" --padding "1 0" "$1"
-}
+#!/bin/bash
+set -e
 
-gum_style "Installing drata agent..."
+source ~/.local/share/astrolinux/gum/gum-styles.sh
+
+gum_styled_text "Installing drata agent..."
+
+cd /tmp
+
+ASSET="Drata-Agent-linux.deb"
+
+LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/drata/agent-releases/releases/latest" | jq -r .tag_name)
+
+DOWNLOAD_URL="https://github.com/drata/agent-releases/releases/download/$LATEST_RELEASE/$ASSET"
+
+wget -qO $ASSET "$DOWNLOAD_URL"
+
+sudo apt-get install -y ./$ASSET
+
+rm $ASSET
+cd -
+
+gum_styled_text "Drata agent installed successfully."

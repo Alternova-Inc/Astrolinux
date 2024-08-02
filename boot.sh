@@ -34,16 +34,16 @@ install_gum() {
     if ! command -v gum &>/dev/null; then
         stiled_text "Installing gum..."
         cd /tmp
+        ASSET="gum.deb"
 
-        # Get the latest version number from GitHub releases
-        GUM_VERSION=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r .tag_name)
+        LATEST_RELEASE=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | jq -r .tag_name)
 
-        # Remove the 'v' prefix from the version number, if present
-        GUM_VERSION=${GUM_VERSION#v}
+        # Remove the 'v' prefix from the latest release, if present
+        LATEST_RELEASE=${LATEST_RELEASE#v}
 
-        wget -qO gum.deb "https://github.com/charmbracelet/gum/releases/download/v${GUM_VERSION}/gum_${GUM_VERSION}_amd64.deb"
-        sudo apt-get install -y ./gum.deb
-        rm gum.deb
+        wget -qO $ASSET "https://github.com/charmbracelet/gum/releases/download/v${LATEST_RELEASE}/gum_${LATEST_RELEASE}_amd64.deb"
+        sudo apt-get install -y ./$ASSET
+        rm $ASSET
         cd -
         stiled_text "gum installed successfully."
     fi
