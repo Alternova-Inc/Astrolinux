@@ -15,9 +15,9 @@ DOWNLOAD_URL="https://github.com/drata/agent-releases/releases/download/$LATEST_
 
 wget -qO $ASSET "$DOWNLOAD_URL"
 
-sudo apt-get install -y ./$ASSET
+sudo dpkg -i ./$ASSET
+sudo apt-get install -f
 
 rm $ASSET
-cd -
 
-gum_styled_text "Drata agent installed successfully."
+cd -
