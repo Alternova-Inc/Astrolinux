@@ -1,5 +1,13 @@
-gum_style() {
-    gum style --foreground '#7671E5' --border-foreground '#F45BC1' --border rounded --align center --width 60 --margin "1 0" --padding "1 0" "$1"
-}
+#!/bin/bash
+set -e
 
-gum_style "Installing libre office..."
+source ~/.local/share/astrolinux/gum/gum-styles.sh
+
+gum_styled_text "Installing LibreOffice..."
+
+sudo apt-get update
+sudo apt-get install -y libreoffice
+
+if command -v libreoffice >/dev/null 2>&1; then
+    gum_styled_text "LibreOffice installed successfully."
+fi
