@@ -7,17 +7,10 @@ install_astrolinux() {
     source ~/.local/share/astrolinux/install.sh
 }
 
-# Function to install Omakub
-install_omakub() {
-    gum_loader "Loading Omakub..."
-    wget -qO- https://omakub.org/install | bash
-}
-
 # Function to present menu and handle selection
 boot_options_menu() {
     CHOICES=(
         "AstroLinux    Install AstroLinux tools for Ubuntu 24.04 by Alternova"
-        "Omakub        An Omakase Developer Setup for Ubuntu 24.04 by DHH"
     )
 
     while true; do
@@ -32,10 +25,6 @@ boot_options_menu() {
         "astrolinux")
             # Show confirmation prompt
             gum confirm "$(text_with_border "Are you sure you want to proceed with AstroLinux installation?")" && gum_loader "Starting installation..." && install_astrolinux
-            ;;
-        "omakub")
-            # Show confirmation prompt
-            gum confirm "$(text_with_border "Are you sure you want to proceed with Omakub installation?")" && gum_loader "Starting installation..." && install_omakub
             ;;
         esac
     done

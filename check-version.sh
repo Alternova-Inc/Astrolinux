@@ -25,4 +25,3 @@ if ! check_ubuntu_version; then
     echo "Script execution failed due to system requirements not being met." >&2
     exit 1
 fi
-

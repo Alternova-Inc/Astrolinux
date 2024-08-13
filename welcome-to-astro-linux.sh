@@ -11,7 +11,8 @@ ascii_art='
  ██║  ██║███████║   ██║   ██║  ██║╚██████╔╝███████╗██║██║ ╚████║╚██████╔╝██╔╝ ██╗
  ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
 
-AstroLinux is only for fresh installations of Ubuntu 24.04. Install it and enjoy ✨!
+AstroLinux is only for fresh installations of Ubuntu 24.04 (Based on Omakub). 
+Install it and enjoy ✨!
 '
 
 # Defines Alternova color palette in the gradient

@@ -12,10 +12,20 @@ if $RUNNING_GNOME; then
 	gsettings set org.gnome.desktop.screensaver lock-enabled false
 	gsettings set org.gnome.desktop.session idle-delay 0
 
+	echo "Setting up background image..."
+
+	# Set background
+	source ~/.local/share/astrolinux/background.sh
+	
 	echo "Starting Desktop tools installation..."
 
 	# Install Desktop tools
 	source ~/.local/share/astrolinux/install/desktop.sh
+	
+	# Revert to normal idle and lock settings
+	gsettings set org.gnome.desktop.screensaver lock-enabled true
+	gsettings set org.gnome.desktop.session idle-delay 300
+	
 else
 	echo "Unable to install because the terminal is not GNOME".
 fi
