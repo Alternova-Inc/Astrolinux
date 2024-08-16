@@ -15,8 +15,7 @@ boot_options_menu() {
 
     while true; do
         # Display the menu
-        CHOICE=$(gum choose "${CHOICES[@]}" --height 5 --header "Select installation option:")
-
+        CHOICE=$(gum choose "${CHOICES[@]}" --cursor="👉 " --unselected-prefix="✨  " --selected-prefix="📌  " --height 15 --header "$(text_with_border "Select installation option:")")
         # Extract the base name of the choice
         OPTION_NAME=$(echo "$CHOICE" | awk -F ' {2,}' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
 

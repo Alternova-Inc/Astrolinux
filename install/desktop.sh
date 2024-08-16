@@ -2,6 +2,7 @@
 set -e
 
 source ~/.local/share/astrolinux/gum/gum-styles.sh
+source ~/.local/share/astrolinux/install/desktop/optional/optional-apps-menu.sh
 
 gum_styled_text "Installing applications..."
 
@@ -9,8 +10,9 @@ gum_styled_text "Installing applications..."
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.session idle-delay 0
 
-# Run desktop installers
-for installer in ~/.local/share/astrolinux/install/desktop/auto/*.sh; do source $installer; done
+# Run desktop autoinstallers
+for installer in ~/.local/share/astrolinux/install/desktop/auto/*.sh; do source "$installer"; done
+boot_optional_apps_menu
 
 # Revert to normal idle and lock settings
 gsettings set org.gnome.desktop.screensaver lock-enabled true
