@@ -20,6 +20,9 @@ install_optional_apps() {
 # Function to present menu and handle selection
 boot_optional_apps_menu() {
 	OPTIONAL_CHOICES=(
+		"DBeaver    Database management tool."
+		"Docker Lazydocker    Simplified Docker management with an intuitive TUI interface"
+		"Gitg    Git GUI client for GNOME."
 		"Github desktop    Desktop application for managing GitHub repositories."
 		"Spotify    Music and podcast streaming platform."
 		"Warp terminal    Next-generation terminal with modern features for developers."
