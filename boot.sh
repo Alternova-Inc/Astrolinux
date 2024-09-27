@@ -60,6 +60,7 @@ prepare_environment() {
 get_astrolinux_repo() {
     stiled_text "Cloning AstroLinux..."
     rm -rf ~/.local/share/astrolinux
+    //NOTE: This implementation is temporary and serves to clone the project locally.
     cp -r /home/"$USER"/Compartida/astrolinux ~/.local/share/astrolinux
     stiled_text "Cloning complete."
 }
