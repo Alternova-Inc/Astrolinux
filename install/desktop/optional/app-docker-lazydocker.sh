@@ -32,6 +32,8 @@ gum_styled_text "Lazydocker installed successfully."
 
 gum_styled_text "Configuring Docker."
 
+sudo cp "$HOME/.local/share/astrolinux/aplications/icons/docker.svg" /usr/share/icons/hicolor/scalable/apps
+
 cat <<EOF >~/.local/share/applications/Docker.desktop
 [Desktop Entry]
 Version=1.0
@@ -40,7 +42,7 @@ Comment=Manage Docker containers with LazyDocker
 Exec=gnome-terminal -- bash -c "lazydocker; exec bash"
 Terminal=false
 Type=Application
-Icon=/home/$USER/.local/share/astrolinux/applications/icons/Docker.png
+Icon=docker
 Categories=GTK;
 StartupNotify=false
 EOF
