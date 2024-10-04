@@ -1,8 +1,4 @@
-# set -e
-
-# We open the gnome terminal with specific measures so that the welcome is well appreciated
-# gnome-terminal --geometry=90x24 -- bash -c "./boot.sh; exec bash"
-
+#!/bin/bash
 set -e
 
 # Function to check if gnome-terminal command is available
@@ -12,12 +8,7 @@ is_gnome_terminal_available() {
 
 # Check if gnome-terminal is available
 if is_gnome_terminal_available; then
-    echo "gnome-terminal is available. Opening a new GNOME Terminal window..."
-    # We open the gnome terminal with specific measures so that the welcome is well appreciated
-    gnome-terminal --geometry=90x24 -- bash -c "./boot.sh; exec bash"
+    gnome-terminal --geometry=90x24 -- bash -c "wget -qO- https://raw.githubusercontent.com/Alternova-Inc/Astrolinux/main/boot.sh | bash; exec bash"
 else
-    echo "gnome-terminal is not available. Executing script in the current terminal..."
-    source ./boot.sh
+    echo "gnome-terminal is not available. Open this script in Ubuntu 24.04 with gnome-terminal."
 fi
-
-clear
