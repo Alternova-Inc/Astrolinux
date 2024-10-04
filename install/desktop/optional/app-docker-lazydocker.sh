@@ -47,4 +47,6 @@ Categories=GTK;
 StartupNotify=false
 EOF
 
+sudo gtk-update-icon-cache /usr/share/icons/hicolor
+
 gum_styled_text "Docker configured successfully."
