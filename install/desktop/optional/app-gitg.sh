@@ -20,15 +20,15 @@ sudo apt install -y meson ninja-build git valac \
     libdazzle-1.0-dev libgpgme-dev gettext
 
 # Create a temporary directory
-TEMP_DIR=$(mktemp -d)
-gum_styled_text "Using temporary directory: $TEMP_DIR"
+gitg_temp_dir=$(mktemp -d -t gitg-XXXXXX)
+gum_styled_text "Using temporary directory: $gitg_temp_dir"
 
 # Clone the repository into the temporary directory
 gum_styled_text "Cloning the gitg repository..."
-git clone https://gitlab.gnome.org/GNOME/gitg.git "$TEMP_DIR/gitg"
+git clone https://gitlab.gnome.org/GNOME/gitg.git "$gitg_temp_dir/gitg"
 
 # Change to the repository directory
-cd "$TEMP_DIR/gitg" || { gum_styled_text "Error changing directory"; exit 1; }
+cd "$gitg_temp_dir/gitg" || { gum_styled_text "Error changing directory"; exit 1; }
 
 # Create the build directory with meson
 gum_styled_text "Configuring the build with Meson..."
@@ -44,7 +44,7 @@ sudo ninja -C build install
 
 # Clean up the temporary directory
 gum_styled_text "Cleaning up..."
-rm -rf "$TEMP_DIR"
+rm -rf "$gitg_temp_dir"
 
 gum_styled_text "Installation completed."
 

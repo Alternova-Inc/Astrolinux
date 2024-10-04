@@ -3,9 +3,11 @@ set -e
 
 source ~/.local/share/astrolinux/gum/gum-styles.sh  # Source the styling functions.
 
-# Create a temporary directory and change to it.
-temp_dir=$(mktemp -d)
-cd "$temp_dir"
+# Create a dedicated temporary directory for Warp
+warp_temp_dir=$(mktemp -d -t warp-XXXXXX)
+gum_styled_text "Using temporary directory: $warp_temp_dir"
+
+cd "$warp_temp_dir" || { gum_styled_text "Error changing directory"; exit 1; }
 
 gum_styled_text "Installing warp terminal..."
 
@@ -29,6 +31,6 @@ sudo apt update && sudo apt install -y warp-terminal
 
 # Change back to the original directory and remove the temporary directory.
 cd - || exit  # If changing back fails, exit the script.
-rm -rf "$temp_dir"  # Remove the temporary directory.
+rm -rf "$warp_temp_dir"  # Remove the temporary directory.
 
 gum_styled_text "Warp Terminal installed successfully."
