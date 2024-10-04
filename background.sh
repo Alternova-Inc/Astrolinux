@@ -9,5 +9,5 @@ if [ ! -f "$IMAGE_PATH" ]; then
 fi
 
 gsettings set org.gnome.desktop.background picture-uri "file://$IMAGE_PATH"
-gsettings set org.gnome.desktop.background picture-options 'scaled'
+gsettings set org.gnome.desktop.background picture-options 'zoom'
 echo "Background screen set in GNOME."
