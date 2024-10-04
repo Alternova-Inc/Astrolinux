@@ -8,14 +8,9 @@ is_gnome_terminal_available() {
 
 # Check if gnome-terminal is available
 if is_gnome_terminal_available; then
-    echo "gnome-terminal is available. Opening a new GNOME Terminal window..."
-    # We open the gnome terminal with specific measures so that the welcome is well appreciated
-    # TODO: update './boot.sh' to 'wget -qO- https://raw.githubusercontent.com/Alternova-Inc/Astrolinux/main/boot.sh | bash'
-    gnome-terminal --geometry=90x24 -- bash -c "./boot.sh; exec bash"
+    gnome-terminal --geometry=90x24 -- bash -c wget -qO- https://raw.githubusercontent.com/Alternova-Inc/Astrolinux/main/boot.sh | bash
 else
-    echo "gnome-terminal is not available. Executing script in the current terminal..."
-    # TODO: update 'source ./boot.sh' to 'wget -qO- https://raw.githubusercontent.com/Alternova-Inc/Astrolinux/main/boot.sh | bash'
-    source ./boot.sh
+    echo "gnome-terminal is not available. open this script in ubutnu 24.04 with gnome-terminal"
 fi
 
 clear
