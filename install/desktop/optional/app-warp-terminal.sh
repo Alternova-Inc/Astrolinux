@@ -1,15 +1,34 @@
 #!/bin/bash
 set -e
 
-source ~/.local/share/astrolinux/gum/gum-styles.sh
+source ~/.local/share/astrolinux/gum/gum-styles.sh  # Source the styling functions.
+
+# Create a temporary directory and change to it.
+temp_dir=$(mktemp -d)
+cd "$temp_dir"
 
 gum_styled_text "Installing warp terminal..."
 
-sudo apt-get install wget gpg
+# Ensure wget and gpg are installed.
+sudo apt-get install -y wget gpg
+
+# Download the GPG key and convert it to a suitable format.
 wget -qO- https://releases.warp.dev/linux/keys/warp.asc | gpg --dearmor > warpdotdev.gpg
+
+# Install the GPG key to the appropriate location.
 sudo install -D -o root -g root -m 644 warpdotdev.gpg /etc/apt/keyrings/warpdotdev.gpg
-sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/warpdotdev.gpg] https://releases.warp.dev/linux/deb stable main" > /etc/apt/sources.list.d/warpdotdev.list'
+
+# Add the Warp terminal repository to the sources list.
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/warpdotdev.gpg] https://releases.warp.dev/linux/deb stable main" | sudo tee /etc/apt/sources.list.d/warpdotdev.list
+
+# Remove the temporary GPG key file.
 rm warpdotdev.gpg
-sudo apt update && sudo apt install warp-terminal
+
+# Update the package list and install the Warp terminal.
+sudo apt update && sudo apt install -y warp-terminal
+
+# Change back to the original directory and remove the temporary directory.
+cd - || exit  # If changing back fails, exit the script.
+rm -rf "$temp_dir"  # Remove the temporary directory.
 
 gum_styled_text "Warp Terminal installed successfully."
