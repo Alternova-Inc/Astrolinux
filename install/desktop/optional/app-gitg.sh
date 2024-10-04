@@ -44,6 +44,7 @@ sudo ninja -C build install
 
 # Clean up the temporary directory
 gum_styled_text "Cleaning up..."
+cd - || exit
 rm -rf "$gitg_temp_dir"
 
 gum_styled_text "Installation completed."
