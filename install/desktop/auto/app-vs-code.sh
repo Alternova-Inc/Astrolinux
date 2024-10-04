@@ -7,22 +7,16 @@ gum_styled_text "Installing Visual Studio Code..."
 
 # Add Microsoft GPG key and repository
 if ! command -v code >/dev/null 2>&1; then
-    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg > /dev/null
-    echo "deb [signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
-    sudo apt update
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg
+    sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+    echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list >/dev/null
+    rm -f packages.microsoft.gpg
+    cd -
 fi
 
 # Install Visual Studio Code
-install_from_url() {
-    local url="$1"
-    local temp_deb="/tmp/temp_package.deb"
-  
-    wget -qO "$temp_deb" "$url"
-    sudo dpkg -i "$temp_deb" || { sudo apt-get install -f -y; }
-    rm "$temp_deb"
-}
-
-install_from_url "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+sudo apt update -y
+sudo apt install -y code
 
 if command -v code >/dev/null 2>&1; then
     gum_styled_text "Visual Studio Code installed successfully."
