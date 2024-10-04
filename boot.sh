@@ -59,11 +59,21 @@ prepare_environment() {
 
 get_astrolinux_repo() {
     stiled_text "Cloning AstroLinux..."
-    rm -rf ~/.local/share/astrolinux
-    # NOTE: This implementation is temporary and serves to clone the project locally.
-    cp -r /home/"$USER"/Compartida/astrolinux ~/.local/share/astrolinux
-    stiled_text "Cloning complete."
+    
+    # Define the target directory
+    local target_dir="$HOME/.local/share/astrolinux"
+    
+    # Remove the existing directory if it exists
+    [ -d "$target_dir" ] && rm -rf "$target_dir"
+
+    # Clone the repository from GitHub
+    if git clone https://github.com/Alternova-Inc/Astrolinux.git "$target_dir"; then
+        stiled_text "Cloning complete."
+    else
+        stiled_text "Error: Failed to clone the repository."
+    fi
 }
+
 
 run_astrolinux_installation() {
     # load gum styles and functions to use in AstroLinux
