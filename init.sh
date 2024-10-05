@@ -8,7 +8,7 @@ is_gnome_terminal_available() {
 
 # Attempt to resize the current terminal
 resize_terminal() {
-    printf '\e[8;24;90t'  # Cambia el tamaño a 24 filas y 90 columnas
+    printf '\e[8;24;90t'
 }
 
 # Check if gnome-terminal is available
