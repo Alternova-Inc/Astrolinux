@@ -13,7 +13,7 @@ resize_terminal() {
 
 # Check if gnome-terminal is available
 if is_gnome_terminal_available; then
-    resize_terminal  # Redimensionar la terminal actual
+    resize_terminal
     eval "$(wget -qO- https://raw.githubusercontent.com/Alternova-Inc/Astrolinux/main/boot.sh)"
 else
     echo "gnome-terminal is not available. Open this script in Ubuntu 24.04 with gnome-terminal."
