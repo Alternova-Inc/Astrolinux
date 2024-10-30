@@ -29,6 +29,14 @@ install_curl() {
     fi
 }
 
+install_jq() {
+    if ! command -v jq &>/dev/null; then
+        stiled_text "Installing jq..."
+        sudo apt-get install -y jq >/dev/null
+        stiled_text "jq installed successfully."
+    fi
+}
+
 # Function to install gum
 install_gum() {
     if ! command -v gum &>/dev/null; then
@@ -54,6 +62,7 @@ prepare_environment() {
     update_packages
     install_git
     install_curl
+    install_jq     
     install_gum
 }
 
