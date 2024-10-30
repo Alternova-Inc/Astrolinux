@@ -11,7 +11,7 @@ ascii_art='
  ██║  ██║███████║   ██║   ██║  ██║╚██████╔╝███████╗██║██║ ╚████║╚██████╔╝██╔╝ ██╗
  ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝
 
-AstroLinux is only for fresh installations of Ubuntu 24.04 (Based on Omakub). 
+AstroLinux is only for fresh installations of Ubuntu 22.04 (Based on Omakub). 
 Install it and enjoy ✨!
 '
 
