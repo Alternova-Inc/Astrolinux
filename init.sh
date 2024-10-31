@@ -14,7 +14,7 @@ resize_terminal() {
 # Check if gnome-terminal is available
 if is_gnome_terminal_available; then
     resize_terminal
-    eval "$(wget -qO- https://raw.githubusercontent.com/Alternova-Inc/Astrolinux/test/boot.sh)"
+    eval "$(wget -qO- https://raw.githubusercontent.com/Alternova-Inc/Astrolinux/Test/boot.sh)"
    # gnome-terminal --geometry=90x24 -- bash -c "./boot.sh; exec bash"
 else
     echo "gnome-terminal is not available. Open this script in Ubuntu 22.04 with gnome-terminal."
