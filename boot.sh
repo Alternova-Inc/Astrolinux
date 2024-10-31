@@ -68,7 +68,12 @@ prepare_environment() {
 
 get_astrolinux_repo() {
     stiled_text "Cloning AstroLinux..."
-    
+
+    rm -rf ~/.local/share/astrolinux
+    # NOTE: This implementation is temporary and serves to clone the project locally.
+    cp -r /home/"$USER"/Documentos/ProyectoDev/Astrolinux ~/.local/share/astrolinux
+: '
+ 
     # Define the target directory
     local target_dir="$HOME/.local/share/astrolinux"
     
@@ -81,6 +86,7 @@ get_astrolinux_repo() {
     else
         stiled_text "Error: Failed to clone the repository."
     fi
+   '
 }
 
 
