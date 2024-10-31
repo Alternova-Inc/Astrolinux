@@ -20,17 +20,16 @@ install_optional_apps() {
 # Function to present menu and handle selection
 boot_optional_apps_menu() {
 	OPTIONAL_CHOICES=(
-		"DBeaver    Database management tool."
-		"Docker Lazydocker    Simplified Docker management with an intuitive TUI interface"
-		"Gitg    Git GUI client for GNOME."
-		"Github desktop    Desktop application for managing GitHub repositories."
-		"Spotify    Music and podcast streaming platform."
-		"Warp terminal    Next-generation terminal with modern features for developers."
+		"DBeaver         Database management tool."
+		"OBS Studio      Allows users to record and stream video and audio from multiple sources in real time.."
+		"Libre Office    LibreOffice will be useful for creating and editing documents, spreadsheets, and presentations."
+		"Spotify         Music and podcast streaming platform."
+		"Warp terminal   Next-generation terminal with modern features for developers."
 	)
 
 	while $is_installing_optional_apps; do
 		# Display the menu
-		CHOICES=$(gum choose "${OPTIONAL_CHOICES[@]}" --no-limit --cursor="👉 " --unselected-prefix="✨  " --selected-prefix="📌  " --height 15 --header "$(text_with_border "Select optional apps")")
+		CHOICES=$(gum choose "${OPTIONAL_CHOICES[@]}" --no-limit --cursor="👉" --unselected-prefix=" ⚪ " --selected-prefix=" 🟢 " --height 15 --header "$(text_with_border "Select optional apps")")
 
 		# Check if options were selected
 		if [ -z "$CHOICES" ]; then
@@ -39,8 +38,8 @@ boot_optional_apps_menu() {
 		fi
 
 		# Extract the base name of the choice
-		OPTION_NAMES=$(echo "$CHOICES" | awk -F ' {2,}' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
-
+		OPTION_NAMES=$(echo "$CHOICES" | awk -F '  ' '{print $1}' | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+	
 		# Show confirmation prompt
 		gum confirm "$(text_with_border "Are you sure you want to proceed with optional apps installation?")" && gum_loader "Starting installation..." && install_optional_apps "$OPTION_NAMES"
 	done
