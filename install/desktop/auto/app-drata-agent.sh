@@ -49,7 +49,7 @@ modify_desktop_file "/usr/share/applications/drata-agent.desktop"
 gtk-launch drata-agent
 gum_loader "Starting Drata Agent..." 5
 
-# la linea siguiente esta funcionando pero al reiniciar el sistema del archivo se elimnina el --no-sandbox %U
+# the following line is working but on reboot the file system removes the --no-sandbox %U
 modify_desktop_file "/home/$USER/.config/autostart/drata-agent.desktop"
 
 # Verify that the executable file is executable and exists
